@@ -1,0 +1,32 @@
+# ---------------------------------------------------------------
+# Vendored third-party repositories — clone from upstream instead.
+#   SAM2/          https://github.com/facebookresearch/sam2
+#   stitching-main/ https://github.com/OpenStitching/stitching
+# ---------------------------------------------------------------
+SAM2/
+stitching-main/
+
+# Model weights (152 MB - 877 MB each; past GitHub's 100 MB file limit)
+*.pt
+*.pth
+*.torch
+
+# Rendered video output (1.7 GB)
+*.avi
+*.mp4
+*.mov
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Environments
+.venv/
+venv/
+env/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
