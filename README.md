@@ -1,6 +1,6 @@
 # Road and Occlusion Segmentation from Drone Video
 
-**EPFL — Urban Transport Systems Laboratory (LUTS) · Semester Project · January 2025**
+**EPFL · Urban Transport Systems Laboratory (LUTS) · Semester Project · January 2025**
 
 UAVs give traffic engineers flexible aerial coverage, but turning that footage into usable road
 geometry is hard: vehicles occlude the very roadway you are trying to segment, road appearance
@@ -8,13 +8,13 @@ varies, and urban scenes are cluttered. This project builds a road-segmentation 
 **Meta's Segment Anything (SAM / SAM 2)**, handles occlusion explicitly, and validates the result
 by **stitching Google Earth frames into a satellite reference** and matching against it.
 
-📄 **[Full report (PDF)](BOUBAKRY_Report.pdf)** — literature review of segmentation and feature
+📄 **[Full report (PDF)](BOUBAKRY_Report.pdf)**: literature review of segmentation and feature
 matching methods, the stitching pipeline, fine-tuning setup and full results.
 
 ![Road segmentation overlaid on a frame of the drone video](figures/road_segmentation_drone.png)
 
 *Road segmentation on a drone frame. The mask follows the carriageway through parked-car rows and
-intersections — the occlusion case the project targets.*
+intersections, the occlusion case the project targets.*
 
 ---
 
@@ -46,8 +46,8 @@ intersections — the occlusion case the project targets.*
 ### 1. Segmentation model
 
 The report reviews **SAM**, **EfficientSAM** and **SAM 2** before settling on the SAM family. The
-architecture that matters here is the three-part split — image encoder (ViT, MAE-pretrained),
-prompt encoder, mask decoder — because the prompt encoder is the lever this project pulls: road
+architecture that matters here is the three-part split into image encoder (ViT, MAE-pretrained),
+prompt encoder and mask decoder. The prompt encoder is the lever this project pulls: road
 segmentation is driven by **point prompts plus a previous mask**, rather than by a single
 forward pass.
 
@@ -115,23 +115,23 @@ large for GitHub's 100 MB per-file limit:
 
 | Excluded | Size | Why | Where to get it |
 |---|---|---|---|
-| `SAM2/` | — | Meta's Segment Anything 2, vendored unmodified | [facebookresearch/sam2](https://github.com/facebookresearch/sam2) |
-| `stitching-main/` | — | The OpenStitching library, vendored unmodified | [OpenStitching/stitching](https://github.com/OpenStitching/stitching) |
+| `SAM2/` | n/a | Meta's Segment Anything 2, vendored unmodified | [facebookresearch/sam2](https://github.com/facebookresearch/sam2) |
+| `stitching-main/` | n/a | The OpenStitching library, vendored unmodified | [OpenStitching/stitching](https://github.com/OpenStitching/stitching) |
 | `SAM2/checkpoints/*.pt` | 152–877 MB | Meta's pretrained SAM 2 weights | `SAM2/checkpoints/download_ckpts.sh` |
-| `SEG_Model.torch` | 180 MB | The fine-tuned segmentation model | — |
-| `final_vid.avi` | 1.7 GB | Rendered output video | — |
+| `SEG_Model.torch` | 180 MB | The fine-tuned segmentation model | n/a |
+| `final_vid.avi` | 1.7 GB | Rendered output video | n/a |
 
 The local working copy is ~3.9 GB; what is tracked here is ~85 MB. To reproduce, clone the two
 upstream repositories into `SAM2/` and `stitching-main/` and run the checkpoint download script.
 
-> The report PDF is 78 MB — under GitHub's hard limit but large, because it embeds the
+> The report PDF is 78 MB, under GitHub's hard limit but large, because it embeds the
 > full-resolution stitched mosaics. Expect a slow first clone.
 
 ---
 
 ## Author
 
-**Ahmed Boubakry** — EPFL, Section de Microtechnique
+**Ahmed Boubakry**, EPFL, Section de Microtechnique
 
 - Supervisor: **Prof. Nikolas Geroliminis**
 - Teacher: **Yura Tak**
