@@ -67,7 +67,7 @@ underneath them rather than broken by them. Morphological operators clean up the
 
 ### 3. Feature matching and stitching
 
-To check that the segmentation generalizes rather than overfitting one video, the drone footage
+To check that the segmentation generalizes rather than overfits one video, the drone footage
 is compared against a satellite reference built from Google Earth frames. The report benchmarks
 **SIFT, ORB, LightGlue, SuperGlue and LoFTR**; the stitching itself runs through the
 **OpenStitching** framework (ORB features → matching → warping → seam estimation → blending).
